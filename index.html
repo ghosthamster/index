@@ -18,16 +18,25 @@
             color: #fff; 
         }
         h1 {
-            margin-bottom: 50px;
+            margin-bottom: 10px; 
+        }
+        .title {
+            font-size: 1.2em; 
+            margin-bottom: 5px; 
+        }
+        .age {
+            margin-bottom: 35px; 
         }
         .button {
             display: inline-block;
-            margin: 15px; 
-            padding: 20px 40px;
-            background-color: #a8dadc; 
-            color: #000; 
+            margin: 15px;
+            padding: 20px 30px; 
+            min-width: 200px; 
+            text-align: center; 
+            background-color: #a8dadc;
+            color: #000;
             text-decoration: none;
-            border-radius: 20px; 
+            border-radius: 20px;
             transition: background-color 0.3s, transform 0.3s;
         }
         .button:hover {
@@ -45,8 +54,23 @@
 </head>
 <body>
     <h1>Maksym Popovych</h1>
+    <div class="title">software engineer</div>
+    <div class="age" id="age"></div>
     <a href="https://www.linkedin.com/in/mvpopovych/" class="button">LinkedIn</a>
     <a href="https://github.com/ghosthamster" class="button">GitHub</a>
-	<a href="mailto:mail@mpopovych.com" class="button email">Email Me</a>
+    <a href="mailto:mail@mpopovych.com" class="button email">Email Me</a>
+    <script>
+        function calculateAge(birthdate) {
+            var today = new Date();
+            var birthDate = new Date(birthdate);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+        document.getElementById('age').innerText = calculateAge('2001-08-13') + ' y.o.';
+    </script>
 </body>
 </html>
